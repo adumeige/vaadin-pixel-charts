@@ -1,0 +1,46 @@
+name: Build and publish Maven artifacts
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: maven-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          server-id: github
+          server-username: GITHUB_ACTOR
+          server-password: GITHUB_TOKEN
+
+      - name: Build and test
+        run: mvn -B -ntp verify -pl vaadin-pixel-charts,vaadin-pixel-charts-karibu -am
+
+      - name: Publish Maven artifacts to GitHub Packages
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: mvn -B -ntp deploy -pl vaadin-pixel-charts,vaadin-pixel-charts-karibu -am -DskipTests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

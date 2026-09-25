@@ -114,3 +114,65 @@ mvn install
 cd vaadin-pixel-charts-demo
 mvn spring-boot:run
 ```
+
+## Maven packages
+
+After the publishing workflow first succeeds on `main`, artifacts are available
+from [GitHub Packages](https://github.com/adumeige/vaadin-pixel-charts/packages).
+The workflow builds and tests with Java 21 on pull requests and pushes to `main`.
+It publishes on pushes to `main`, or when manually dispatched on `main`, using
+GitHub's automatic `GITHUB_TOKEN` with `packages: write`; no custom secret is needed.
+
+Published JARs (group ID `org.antoined`, version `0.0.1-SNAPSHOT`):
+
+- `vaadin-pixel-charts`
+- `vaadin-pixel-charts-karibu`
+
+The reactor parent POM is also published so consumers can resolve the JARs.
+The demo application is excluded from this library build and publication.
+
+Add the repository to your consuming project's `pom.xml`:
+
+```xml
+<repositories>
+    <repository>
+        <id>github-vaadin-pixel-charts</id>
+        <url>https://maven.pkg.github.com/adumeige/vaadin-pixel-charts</url>
+        <snapshots><enabled>true</enabled></snapshots>
+    </repository>
+</repositories>
+```
+
+GitHub requires authentication even for public Maven packages. Add a matching
+server to your existing `~/.m2/settings.xml` (merge this into `<servers>`), using a
+personal access token (classic) with `read:packages`:
+
+```xml
+<server>
+    <id>github-vaadin-pixel-charts</id>
+    <username>${env.GITHUB_ACTOR}</username>
+    <password>${env.GITHUB_TOKEN}</password>
+</server>
+```
+
+Set `GITHUB_ACTOR` to your GitHub username and `GITHUB_TOKEN` to your token;
+keep the token outside the repository. Then add the desired dependency:
+
+```xml
+<dependency>
+    <groupId>org.antoined</groupId>
+    <artifactId>vaadin-pixel-charts</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</dependency>
+```
+
+Run the same build locally with Java 21:
+
+```sh
+mvn -B -ntp -pl vaadin-pixel-charts,vaadin-pixel-charts-karibu -am verify
+```
+
+The current versions are snapshots. To publish a stable version, update the
+reactor and child POM versions together before merging to `main`; published
+release versions must be unique. Creating a Git tag does not change Maven versions
+or trigger this workflow.
