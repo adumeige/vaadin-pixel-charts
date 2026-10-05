@@ -1,4 +1,4 @@
-package org.antoined.vaadin.pixelcharts.demo;
+package io.github.adumeige.vaadin.pixelcharts.demo;
 
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.component.page.Push;

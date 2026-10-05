@@ -5,16 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.antoined</groupId>
+        <groupId>io.github.adumeige.vaadin-pixel-charts</groupId>
         <artifactId>vaadin-pixel-charts-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>vaadin-pixel-charts-demo</artifactId>
+    <name>Vaadin Pixel Charts Demo</name>
 
     <dependencies>
         <dependency>
-            <groupId>org.antoined</groupId>
+            <groupId>io.github.adumeige.vaadin-pixel-charts</groupId>
             <artifactId>vaadin-pixel-charts</artifactId>
             <version>${project.version}</version>
         </dependency>
