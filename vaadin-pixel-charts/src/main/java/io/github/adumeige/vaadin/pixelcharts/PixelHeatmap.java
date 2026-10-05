@@ -1,4 +1,4 @@
-package org.antoined.vaadin.pixelcharts;
+package io.github.adumeige.vaadin.pixelcharts;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEventListener;

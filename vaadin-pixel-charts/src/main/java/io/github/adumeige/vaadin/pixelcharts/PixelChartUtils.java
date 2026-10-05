@@ -1,4 +1,4 @@
-package org.antoined.vaadin.pixelcharts;
+package io.github.adumeige.vaadin.pixelcharts;
 
 import elemental.json.Json;
 import elemental.json.JsonArray;

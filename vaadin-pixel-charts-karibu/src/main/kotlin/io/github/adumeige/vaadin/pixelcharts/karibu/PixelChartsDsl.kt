@@ -1,12 +1,12 @@
-package org.antoined.vaadin.pixelcharts.karibu
+package io.github.adumeige.vaadin.pixelcharts.karibu
 
 import com.github.mvysny.karibudsl.v10.VaadinDsl
 import com.github.mvysny.karibudsl.v10.init
 import com.vaadin.flow.component.HasComponents
-import org.antoined.vaadin.pixelcharts.PixelBarChart
-import org.antoined.vaadin.pixelcharts.PixelHeatmap
-import org.antoined.vaadin.pixelcharts.PixelScatter
-import org.antoined.vaadin.pixelcharts.PixelSparkline
+import io.github.adumeige.vaadin.pixelcharts.PixelBarChart
+import io.github.adumeige.vaadin.pixelcharts.PixelHeatmap
+import io.github.adumeige.vaadin.pixelcharts.PixelScatter
+import io.github.adumeige.vaadin.pixelcharts.PixelSparkline
 
 /**
  * Creates a [PixelBarChart] — equalizer-style bar chart with stacked pixel blocks.

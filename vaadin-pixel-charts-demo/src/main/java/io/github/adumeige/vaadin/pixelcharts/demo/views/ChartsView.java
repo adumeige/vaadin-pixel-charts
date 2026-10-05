@@ -1,4 +1,4 @@
-package org.antoined.vaadin.pixelcharts.demo.views;
+package io.github.adumeige.vaadin.pixelcharts.demo.views;
 
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Component;
@@ -17,10 +17,10 @@ import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import org.antoined.vaadin.pixelcharts.PixelBarChart;
-import org.antoined.vaadin.pixelcharts.PixelHeatmap;
-import org.antoined.vaadin.pixelcharts.PixelScatter;
-import org.antoined.vaadin.pixelcharts.PixelSparkline;
+import io.github.adumeige.vaadin.pixelcharts.PixelBarChart;
+import io.github.adumeige.vaadin.pixelcharts.PixelHeatmap;
+import io.github.adumeige.vaadin.pixelcharts.PixelScatter;
+import io.github.adumeige.vaadin.pixelcharts.PixelSparkline;
 
 import java.util.ArrayList;
 import java.util.List;

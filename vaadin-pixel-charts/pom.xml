@@ -5,12 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.antoined</groupId>
+        <groupId>io.github.adumeige.vaadin-pixel-charts</groupId>
         <artifactId>vaadin-pixel-charts-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>vaadin-pixel-charts</artifactId>
+    <name>Vaadin Pixel Charts Component</name>
     <description>Pixel-art chart components for Vaadin — bar, sparkline, heatmap, scatter with configurable glow, theme-aware colors, and hover crosshair.</description>
 
     <dependencies>
@@ -20,4 +21,27 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>central-release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.12.0</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
